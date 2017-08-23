@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beer Test</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/materialize.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script defer src="index.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <div style="text-align: center">
+      <img id="logo" src="img/logo.png" height="75px" width="auto">
+    </div>
+  </header>
+
+  <!-- <div mySidenavRt"> -->
+
+  <div id="mySidenav" class="sidenav">
+    <a id="LftCloseBtn" href="javascript:void(0)" class="closebtn Trident hidden" onclick="closeNav()">&times;</a>
+    <h5>Find your Beer</h5>
+    <!-- <p>Enter a name to search for your favorite beer:</p> -->
+    <form class="getBeers">
+      <ul class="pad">
+        <li class="dFlex">
+          <a>ID:</a>
+          <input type="string" id="searchId" name="id" />
+        </li>
+        <li class="dFlex">
+          <a>Name:</a>
+          <input type="string" id="searchName" name="search" />
+        </li>
+        <li class="dFlex">
+          <a class="modal-close" href="#modal1">ABV&#62:</a>
+          <input type="string" id="searchABV_gt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a class="modal-close" href="#modal1">ABV&#60:</a>
+          <input type="string" id="searchABV_lt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a class="modal-close" href="#modal2">IBU&#62:</a>
+          <input type="string" id="searchIBU_gt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a class="modal-close" href="#modal2">IBU&#60:</a>
+          <input type="string" id="searchIBU_lt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a class="modal-close" href="#modal3">EBC&#62:</a>
+          <input type="string" id="searchEBC_gt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a class="modal-close" href="#modal3">EBC&#60:</a>
+          <input type="string" id="searchEBC_lt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a>Yeast:</a>
+          <input type="string" id="searchYeast" name="search" />
+        </li>
+        <li class="dFlex">
+          <a>Hops:</a>
+          <input type="string" id="searchHops" name="search" />
+        </li>
+        <li class="dFlex">
+          <a>Malt:</a>
+          <input type="string" id="searchMalt" name="search" />
+        </li>
+        <li class="dFlex">
+          <a>Food:</a>
+          <input type="string" id="searchFood" name="search" />
+        </li>
+        <li class="btnCenter">
+          <button type="submit" name="action">Search</button>
+        </li>
+      </ul>
+    </form>
+
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+
+    <div>What are all those jumbled letters above? Click on each of them for more information.
+    </div>
+
+  </div>
+
+  <div id="mainBody" class="row mainBody">
+    <!--  style="width:100%" -->
+
+    <!-- <div> -->
+
+    <div id="main" class="col s6" style="height:100%">
+      <!-- <h2>Sidenav Push Example</h2>
+      <p>Click on the element below to open the side navigation menu, and push this content to the right.</p> -->
+      <div>
+        <span class="Trident hidden" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        <span id="mainFirstRow"></span>
+      </div>
+
+      <div id="listings"></div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Start with Beer</span>
+
+      <div id="Recipe"></div>
+
+    </div>
+
+
+    <div id="mainRt" class="col s6" style="height:100%">
+      <span class="Trident hidden" style="font-size:30px;cursor:pointer" onclick="NavRtOpen()">&#9776; open</span>
+      <span id="mainRtFirstRow"></span>
+
+      <div class="results"></div>
+      <span style="font-size:30px;cursor:pointer" onclick="NavRtOpen()">&#9776; Start with Food</span>
+
+      <div class="recipeDetail"></div>
+
+    </div>
+    <!-- // -->
+    <!-- </div> -->
+  </div>
+
+  <div id="mySidenavRt" class="sidenavRt">
+    <a href="javascript:void(0)" class="closebtnRt Trident hidden" onclick="NavRtClose()">&times;</a>
+    <form class="getFood">
+      <ul id="foodPanel" class="pad">
+        <!-- <li class="dFlex">
+              <a>test</a>
+              <input type="string" id="searchId2" name="id" />
+            </li> -->
+      </ul>
+    </form>
+  </div>
+
+  <!-- Modals**********Modals**********Modals**********Modals**********Modals********** -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Discription</th>
+        </thead>
+        <tbody>
+          <row>
+            <td>ABV</td>
+            <td>Alcohol by volume (abbreviated as ABV, abv, or alc/vol) is a standard measure of how much alcohol (ethanol) is contained in a given volume of an alcoholic beverage (expressed as a volume percent).</td>
+          </row>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Discription</th>
+        </thead>
+        <tbody>
+          <row>
+            <td>IBU</td>
+            <td>IBU is an abbreviation for the International Bitterness Units scale, a gauge of beer's bitterness. What IBUs measure are the parts per million of isohumulone found in a beer. Isohumulone is the acid found in hops that gives beer its bitter
+              bite.</td>
+          </row>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Discription</th>
+        </thead>
+        <tbody>
+          <row>
+            <td>EBC</td>
+            <td>The EBC convention measures beer and wort colour, as well as quantifying turbidity (also known as haze) in beer.</td>
+          </row>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Discription</th>
+        </thead>
+        <tbody>
+          <row>
+            <td>SRM</td>
+            <td>The Standard Reference Method, abbreviated as SRM is the color system used by brewers to specify finished beer and malt color. In the case of malt it is actually the SRM color of a laboratory wort made from the malt which is printed on the
+              package.</td>
+          </row>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Discription</th>
+        </thead>
+        <tbody>
+          <row>
+            <td>PH</td>
+            <td>The pH scale runs from 0 to 14, with the range of 0-7 being acidic, and 8-14 being more alkaline. Most of what we eat and drink is around 7. Dark malts tend to have lower, more acidic pH levels, and slight pH differences affect the hop-components,
+              and the bitterness of the flavour.</td>
+          </row>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Discription</th>
+        </thead>
+        <tbody>
+          <row>
+            <td class="noWrap">Attenuation level</td>
+            <td>Attenuation is the percentage that measures the conversion of sugars into alcohol and carbon dioxide by the fermentation process; a more attenuated beer will generally be drier and more alcoholic than a less attenuated beer made from the same
+              wort.</td>
+          </row>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Modals**********Modals**********Modals**********Modals**********Modals********** -->
+
+  <footer>
+    <div id="footer" style="text-align: center">
+      <p>Copyright Jeff G56 Galvanize Seattle 2017</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
